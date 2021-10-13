@@ -1,1 +1,3 @@
-# 🤘 Chater Glass
+# 🤘 CIS Force project
+
+Skill: Next.js
