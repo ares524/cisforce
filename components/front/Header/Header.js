@@ -25,7 +25,7 @@ class Header extends React.Component {
         <Container className="justify-content-center">
           <NavbarBrand className="d-flex">
             <Link href={"/"}>
-              <span className={s.logoStyle}>Welcome to Chater glasses</span>
+              <span className={s.logoStyle}> CIS Force Task </span>
             </Link>
           </NavbarBrand>
         </Container>
