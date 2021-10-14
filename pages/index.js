@@ -58,7 +58,7 @@ const Index = () => {
       <Container>
         <div className={"d-flex justify-content-center mb-5" } style={{ marginTop: "10%" }}>
             {users.map( (user, index) => {
-              return <Link href={`/user/${user.id}`}>
+              return <Link href={`/user/${user.id}`} as={`/user/${user.first_name}?userId=${user.id}`}>
                 <Card key={index} className="mr-auto" style={{ cursor: "pointer" }}>
                   <CardImg top width="137" src={user.avatar} height={137}  alt="Card image cap" />
                   <CardBody>

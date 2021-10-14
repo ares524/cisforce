@@ -1,6 +1,6 @@
 const express = require('express')
 const next = require('next')
-
+const { parse } = require('url')
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -10,7 +10,16 @@ app.prepare().then(() => {
     const server = express()
 
     server.all('*', (req, res) => {
-        return handle(req, res)
+        const parsedUrl = parse(req.url, true);
+        const { pathname, query } = parsedUrl;
+
+        if (pathname.includes("user")) {
+            const actualPage = `/user/${query.userId}`;
+            const queryParams = { userId: query.userId };
+            return app.render(req, res, actualPage, queryParams)
+        } else {
+            return handle(req, res)
+        }
     })
 
     server.listen(port, (err) => {

@@ -14,8 +14,13 @@ import config from "constants/config";
 import cache from "memory-cache";
 
 const Index = ({ user: serverSideUser }) => {
-
+  
   const [user, setUser] = React.useState(serverSideUser);
+
+  React.useEffect(() => {
+    console.log(serverSideUser);
+    // window.history.replaceState(null, '', `/user/${serverSideUser.data.first_name}`);
+  }, []);
 
   return (
     <>
@@ -52,7 +57,7 @@ const Index = ({ user: serverSideUser }) => {
 };
 
 export async function getServerSideProps(context) {
-    const url = config.baseURLApi + "/users/"+context.query.id;
+    const url = config.baseURLApi + "/users/"+context.query.userId;
 
     const cachedResponse = cache.get(url);
     let user = [];
